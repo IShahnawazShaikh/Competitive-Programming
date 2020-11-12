@@ -1,15 +1,7 @@
-/*
-------------------------------|بسم الله الرحمن الرحيم|------------------------------//
-------------"IN THE NAME OF ALLAH, THE MOST GRACIUOS, THE MOST MERCIFUL"-------------//
-__________________________________ShahnawazShaikh_____________________________________
-*/
-
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include<map>
 using namespace std;
-#define int int64_t
 #define int int64_t
 int32_t main(){
 ios_base::sync_with_stdio(false);
@@ -17,25 +9,20 @@ cin.tie(NULL);
 int t;
 cin>>t;
 while(t--){
-int i;
-int n;
+int n,i;
 cin>>n;
-vector<int>v(2*n);
-map <int,int> m;
+vector<int> v(2*n);
+for(auto &x: v) cin>>x;
+vector<int> ans;
+vector<bool> check(n+1,true);
 for(i=0;i<2*n;i++){
-	cin>>v[i];
+if(check[v[i]]){
+	ans.push_back(v[i]);
+	check[v[i]]=false;
 }
-vector<int> v2;
-for(auto val: v){
-  m[val]++;
-  if(m[val]==1){
-  	 v2.push_back(val);
-  }
 }
-for(auto val: v2)
-  cout<<val<<" ";
-		 
-cout<<endl;	
+for(auto i: ans) cout<<i<<" "; 	
+cout<<endl;
 }
 return 0;	
 }
