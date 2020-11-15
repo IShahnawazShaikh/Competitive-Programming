@@ -1,33 +1,38 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
-int main(){
-int t,n,x,i,j,k,sum=0,Plength=0,Clength=0;
+#define int int64_t
+int32_t main(){
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);	
+int t;
 cin>>t;
-while(t>0){
+while(t--){
+
+int n,x,i;
 cin>>n>>x;
-vector<int>prices(n);
-Plength=0;
-for(int i=0;i<n;i++)
-	cin>>prices[i];
-        for (int j=0;j<n;j++) { 
-            sum=0;
-            Clength=0;
-            for (int k=0;k<=j;k++) {
-                sum+=prices[k];
-                Clength+=1;
-            }
-             if(sum%x!=0){
-                 if(Clength>Plength)
-                    Plength=Clength; 
-               } 
-        } 
-  if(Plength==0)
-     cout<<-1;
-   else    
-    cout<<Plength;
-  cout<<endl;
-  t--;
- }   
+long long sum=0,sum2=0;
+vector<int> a(n);
+for(i=0;i<n;i++){
+	cin>>a[i];
+	sum+=a[i];
+}
+
+if(sum%x!=0) {
+  cout<<n<<endl;
+  continue;
+}
+int ans=0,l=0;
+for(i=0;i<n;i++){
+ sum2+=a[i];
+ l+=1;
+ if(sum2%x!=0) ans=max(ans,l);
+ if((sum-sum2)%x!=0) ans=max(ans,n-l);
+}
+if(!ans) cout<<-1<<endl;
+else cout<<ans<<endl;
+}
+
 return 0;	
 }
