@@ -1,2 +1,2 @@
 # Competative Programming
- This Repository Includes CP Problems.
+ This Repository Includes DS/CP Problems.
