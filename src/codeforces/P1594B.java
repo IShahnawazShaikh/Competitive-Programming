@@ -28,46 +28,21 @@ public class P1594B {
 			 
             int n=i();
             int k=i();
-            
-            long[] power=new long[32];
-            
-            for(int i=0;i<32;i++) {
-              long pow=(long)Math.pow(n, i);
-              power[i]=pow%mod;
-            }
-            //System.out.println(Arrays.toString(power));
-            int count=1;
-            long curr=1;
-            int i=1;
-            while(count!=k) {
-            	
-            	long temp=i-1>=0? power[i-1]  : 0;
-            	int p=i-2;
-            	while(p>=0 && count<k && temp+power[p]<power[i] ) {
-            		
-            		temp+=power[p];
-            		temp%=mod;
-            		curr=temp;
-            		count+=1;
-            		p-=1;
-            		
-
-                	System.out.println("inner: "+count+" "+curr);
-            		
-            	}
-            	if(count==k) break;
-            	
-            	curr=power[i];
-            	count+=1;
-            	i+=1;
-            	
-            	System.out.println("outer: "+count+" "+curr);
-            	
-            }
-            
-            out.print(curr);
-            
-			out.print("\n");
+            long ans=0;
+            long fact=1;
+           	while(k>0) {
+           		
+           		if((k&1)>0) {
+           			ans=(ans+fact)%mod;
+           		}
+           		
+           		k>>=1;
+           		fact*=n;
+           		fact%=mod;
+           		
+           	}
+            out.print(ans);
+            out.print("\n");
 			out.flush();
 		}
 		out.close();

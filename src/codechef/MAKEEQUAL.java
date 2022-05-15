@@ -20,7 +20,7 @@ class MAKEEQUAL {
 	static long mod = (long) (1e9 + 7);
 
 	public static void main(String[] args) throws Exception {
-		//System.out.println("Test");
+		System.out.println("Test");
 
 		int test = i();
 		while (test-- > 0) {

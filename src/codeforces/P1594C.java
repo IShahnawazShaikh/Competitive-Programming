@@ -12,6 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class P1594C {
@@ -22,22 +23,54 @@ public class P1594C {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Test");
 
-		int test = i();
+		Scanner sc = new Scanner(System.in);
+		int test = sc.nextInt();
 		while (test-- > 0) {
-			 
-            
-			out.print("\n");
+
+			int n = sc.nextInt();
+			String ss = sc.next();
+			String s = sc.next();
+
+			char ch = ss.charAt(0);
+
+			boolean st = true;
+			for (int i = 0; i < n; i++) {
+				if (s.charAt(i) != ch) {
+					st = false;
+					break;
+				}
+			}
+			if (st) {
+				out.print(0);
+			} else {
+				int idx = 0;
+				for (int i = n - 1; i >= 0; i--) {
+					if (s.charAt(i) == ch) {
+						idx = i + 1;
+						break;
+					}
+				}
+
+				if (2 * idx > n) {
+					out.println(1);
+					out.print(idx);
+				} else {
+					out.println(2);
+					out.print((n - 1) + " " + n);
+				}
+			}
+            out.print("\n");
 			out.flush();
 		}
 		out.close();
 	}
 
-	static class pair {
-		long x, y;
+	static class Pair {
+		int i, cnt;
 
-		pair(long ar, long ar2) {
-			x = ar;
-			y = ar2;
+		Pair(int c, int id) {
+			cnt = c;
+			i = id;
 		}
 	}
 
@@ -205,6 +238,7 @@ public class P1594C {
 		}
 		return temp;
 	}
+
 	static String string() {
 		return in.nextLine();
 	}

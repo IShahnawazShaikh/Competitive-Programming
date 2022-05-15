@@ -25,6 +25,9 @@ public class P1594A {
 		int test = i();
 		while (test-- > 0) {
 			 
+			long n=l();
+			
+			out.print(-1*(n-1)+" "+n);;
             
 			out.print("\n");
 			out.flush();
